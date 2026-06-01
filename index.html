@@ -54,37 +54,59 @@
     <iframe src="https://openprocessing.org/sketch/2959236/embed/" width="640" height="360"></iframe>
 
     <script>
-      const elements = document.querySelectorAll('.typewriter');
-      let current = 0;
+  const elements = document.querySelectorAll('.typewriter');
+  let current = 0;
 
-      function typeElement(el, callback) {
-        const html = el.innerHTML;
-        el.innerHTML = '';
-        let i = 0;
-        el.style.borderRight = '2px solid';
-        el.style.animation = 'blink 0.75s step-end infinite';
-        const timer = setInterval(() => {
-          el.innerHTML = html.slice(0, i);
-          i++;
-          if (i > html.length) {
-            clearInterval(timer);
-            el.style.borderRight = 'none';
-            el.style.animation = 'none';
-            if (callback) callback();
-          }
-        }, 30);
+  function typeElement(el, callback) {
+    // テキストノードだけを集める
+    const nodes = [];
+    function collectTextNodes(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        nodes.push({ node, text: node.textContent });
+        node.textContent = '';
+      } else {
+        node.childNodes.forEach(collectTextNodes);
+      }
+    }
+    collectTextNodes(el);
+
+    // 全テキストを結合してインデックス管理
+    let nodeIndex = 0;
+    let charIndex = 0;
+
+    el.style.borderRight = '2px solid';
+    el.style.animation = 'blink 0.75s step-end infinite';
+
+    const timer = setInterval(() => {
+      if (nodeIndex >= nodes.length) {
+        clearInterval(timer);
+        el.style.borderRight = 'none';
+        el.style.animation = 'none';
+        if (callback) callback();
+        return;
       }
 
-      function typeNext() {
-        if (current < elements.length) {
-          typeElement(elements[current], () => {
-            current++;
-            typeNext();
-          });
-        }
-      }
+      const current = nodes[nodeIndex];
+      charIndex++;
+      current.node.textContent = current.text.slice(0, charIndex);
 
-      typeNext();
-    </script>
+      if (charIndex >= current.text.length) {
+        nodeIndex++;
+        charIndex = 0;
+      }
+    }, 30);
+  }
+
+  function typeNext() {
+    if (current < elements.length) {
+      typeElement(elements[current], () => {
+        current++;
+        typeNext();
+      });
+    }
+  }
+
+  typeNext();
+</script>
   </body>
 </html>
