@@ -1,7 +1,5 @@
 .typewriter {
-  border-right: 2px solid;
-  animation: blink 0.75s step-end infinite;
-  visibility: hidden; /* JS が制御するまで非表示 */
+  display: inline-block;
 }
 
 @keyframes blink {
