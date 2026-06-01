@@ -1,18 +1,7 @@
 .typewriter {
-  font-family: monospace;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-  width: 10ch;
-  animation:
-    typing 2s steps(10),
-    blink 0.75s step-end infinite;
   border-right: 2px solid;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to   { width: 18ch }
+  animation: blink 0.75s step-end infinite;
+  visibility: hidden; /* JS が制御するまで非表示 */
 }
 
 @keyframes blink {
