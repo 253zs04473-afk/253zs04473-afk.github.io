@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1 class="typewriter">hikaru1663</h1>
-    <img src='Gemini_Generated_Image_h34v93h34v93h34v.png' width='130'>
+    <img src='Gemini_Generated_Image_h34v93h34v93h34v.png' width='280'>
     <h2 class="typewriter">About</h2>
     <p class="typewriter">
       ZEN大学生秋入学一期生のhikaru1663です。<br>
@@ -54,59 +54,54 @@
     <iframe src="https://openprocessing.org/sketch/2959236/embed/" width="640" height="360"></iframe>
 
     <script>
-  const elements = document.querySelectorAll('.typewriter');
-  let current = 0;
+      const elements = document.querySelectorAll('.typewriter');
+      let current = 0;
 
-  function typeElement(el, callback) {
-    // テキストノードだけを集める
-    const nodes = [];
-    function collectTextNodes(node) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        nodes.push({ node, text: node.textContent });
-        node.textContent = '';
-      } else {
-        node.childNodes.forEach(collectTextNodes);
+      function typeElement(el, callback) {
+        const nodes = [];
+        function collectTextNodes(node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            nodes.push({ node, text: node.textContent });
+            node.textContent = '';
+          } else {
+            node.childNodes.forEach(collectTextNodes);
+          }
+        }
+        collectTextNodes(el);
+
+        let nodeIndex = 0;
+        let charIndex = 0;
+        el.style.borderRight = '2px solid';
+        el.style.animation = 'blink 0.75s step-end infinite';
+
+        const timer = setInterval(() => {
+          if (nodeIndex >= nodes.length) {
+            clearInterval(timer);
+            el.style.borderRight = 'none';
+            el.style.animation = 'none';
+            if (callback) callback();
+            return;
+          }
+          const cur = nodes[nodeIndex];
+          charIndex++;
+          cur.node.textContent = cur.text.slice(0, charIndex);
+          if (charIndex >= cur.text.length) {
+            nodeIndex++;
+            charIndex = 0;
+          }
+        }, 30);
       }
-    }
-    collectTextNodes(el);
 
-    // 全テキストを結合してインデックス管理
-    let nodeIndex = 0;
-    let charIndex = 0;
-
-    el.style.borderRight = '2px solid';
-    el.style.animation = 'blink 0.75s step-end infinite';
-
-    const timer = setInterval(() => {
-      if (nodeIndex >= nodes.length) {
-        clearInterval(timer);
-        el.style.borderRight = 'none';
-        el.style.animation = 'none';
-        if (callback) callback();
-        return;
+      function typeNext() {
+        if (current < elements.length) {
+          typeElement(elements[current], () => {
+            current++;
+            typeNext();
+          });
+        }
       }
 
-      const current = nodes[nodeIndex];
-      charIndex++;
-      current.node.textContent = current.text.slice(0, charIndex);
-
-      if (charIndex >= current.text.length) {
-        nodeIndex++;
-        charIndex = 0;
-      }
-    }, 30);
-  }
-
-  function typeNext() {
-    if (current < elements.length) {
-      typeElement(elements[current], () => {
-        current++;
-        typeNext();
-      });
-    }
-  }
-
-  typeNext();
-</script>
+      typeNext();
+    </script>
   </body>
 </html>
