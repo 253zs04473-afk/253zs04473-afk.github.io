@@ -7,41 +7,7 @@
     <title>hikaru1663のポートフォリオ</title>
     
   </head>
-  <script>
-  const elements = document.querySelectorAll('.typewriter');
-  let current = 0;
-
-  function typeElement(el, callback) {
-    const html = el.innerHTML;  // innerTextではなくinnerHTMLを使う
-    el.innerHTML = '';
-    let i = 0;
-
-    el.style.borderRight = '2px solid';
-    el.style.animation = 'blink 0.75s step-end infinite';
-
-    const timer = setInterval(() => {
-      el.innerHTML = html.slice(0, i);
-      i++;
-      if (i > html.length) {
-        clearInterval(timer);
-        el.style.borderRight = 'none';
-        el.style.animation = 'none';
-        if (callback) callback();
-      }
-    }, 30);
-  }
-
-  function typeNext() {
-    if (current < elements.length) {
-      typeElement(elements[current], () => {
-        current++;
-        typeNext();
-      });
-    }
-  }
-
-  typeNext();
-</script>
+  
   <body>
     <h1 class="typewriter">hikaru1663</h1>
     <img src='Gemini_Generated_Image_h34v93h34v93h34v.png'　width='280'>
@@ -113,5 +79,40 @@
 
     <h3　class="typewriter">Open Processing</h3>
     <iframe src="https://openprocessing.org/sketch/2959236/embed/" width="640" height="360"></iframe>
+      <script>
+  const elements = document.querySelectorAll('.typewriter');
+  let current = 0;
+
+  function typeElement(el, callback) {
+    const html = el.innerHTML;  // innerTextではなくinnerHTMLを使う
+    el.innerHTML = '';
+    let i = 0;
+
+    el.style.borderRight = '2px solid';
+    el.style.animation = 'blink 0.75s step-end infinite';
+
+    const timer = setInterval(() => {
+      el.innerHTML = html.slice(0, i);
+      i++;
+      if (i > html.length) {
+        clearInterval(timer);
+        el.style.borderRight = 'none';
+        el.style.animation = 'none';
+        if (callback) callback();
+      }
+    }, 30);
+  }
+
+  function typeNext() {
+    if (current < elements.length) {
+      typeElement(elements[current], () => {
+        current++;
+        typeNext();
+      });
+    }
+  }
+
+  typeNext();
+    </script>
   </body>
 </html>
