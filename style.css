@@ -2,10 +2,10 @@
   font-family: monospace;
   overflow: hidden;
   white-space: nowrap;
-  /* 文字数に合わせて幅を調整 (1文字 ≈ 1ch) */
-  width: 18ch;
+  display: inline-block;
+  width: 10ch;
   animation:
-    typing 2s steps(18),
+    typing 2s steps(10),
     blink 0.75s step-end infinite;
   border-right: 2px solid;
 }
