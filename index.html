@@ -7,101 +7,72 @@
     <title>hikaru1663のポートフォリオ</title>
   </head>
   <body>
-    <h1 class="typewriter">hikaru1663</h1>
-    <img src='Gemini_Generated_Image_h34v93h34v93h34v.png' width='280'>
-    <h2 class="typewriter">About</h2>
-    <p class="typewriter">
+    <h1>hikaru1663</h1>
+    <img src='Gemini_Generated_Image_h34v93h34v93h34v.png'　width='280'>
+    <h2>About</h2>
+    <p>
       ZEN大学生秋入学一期生のhikaru1663です。<br>
-      将来はコーヒー業界に入るか、航空業界に入るかの二択で迷っています。<br>
+      将来はコーヒー業界に入るか、航空業界に入るかの二択で迷っています。　<br>
       英語などの自己表現が得意です。
     </p>
-    <h3 class="typewriter">Profile</h3>
-    <ul class="typewriter">
+
+    <h3>Profile</h3>
+    <ul>
       <li>hikaru1663（ヒカル）</li>
       <li>東京都小金井市</li>
       <li>Web開発、書道、阿波踊り、英語、コーヒー</li>
     </ul>
-    <h3 class="typewriter">Skills</h3>
+
+    <h3>Skills</h3>
     <table>
-      <tr><th>OS</th><td>MAC</td></tr>
-      <tr><th>Engine, Frameworks</th><td>Node.js, Express など</td></tr>
-      <tr><th>Tool, MiddleWare</th><td>Git, PostgreSQL など</td></tr>
-      <tr><th>資格・免許</th><td>英語検定準一級、ITパスポート、コーヒーインストラクター2級、普通自動車運転免許</td></tr>
+      <tr>
+        <th>OS</th>
+        <td>MAC</td>
+      </tr>
+      <tr>
+        <th>Engine, Frameworks</th>
+        <td>Node.js, Express など</td>
+      </tr>
+      <tr>
+        <th>Tool, MiddleWare</th>
+        <td>Git, PostgreSQL など</td>
+      </tr>
+      <tr>
+        <th>資格・免許</th>
+        <td>英語検定準一級、ITパスポート、コーヒーインストラクター2級、普通自動車運転免許</td>
+      </tr>
     </table>
-    <h3 class="typewriter">Works</h3>
-    <p class="typewriter">これから随時作成する予定です。</p>
-    <ul class="typewriter">
+
+    <h3>Works</h3>
+    <p>これから随時作成する予定です。</p>
+    <ul>
       <li><a href="https://github.com/">GitHub</a></li>
-      <li>作った作品
+      <li>
+        作った作品
         <ul>
           <li><a href="https://253zs04473-afk.github.io/">ポートフォリオサイト（今見ているページ）</a></li>
         </ul>
       </li>
     </ul>
-    <h3 class="typewriter">Contact</h3>
-    <p class="typewriter">連絡先や SNS のアカウントを書きましょう。</p>
-    <ul class="typewriter">
+
+    <h3>Contact</h3>
+    <p>連絡先や SNS のアカウントを書きましょう。</p>
+    <ul>
       <li><a href="https://www.instagram.com/hikr_0104/">Instagram</a></li>
       <li><a href="https://x.com/NakamuraHikar10">X(旧 Twitter)</a></li>
     </ul>
-    <h3 class="typewriter">History</h3>
-    <p class="typewriter">学歴、職歴、アルバイト、インターン経験など。</p>
+
+    <h3>History</h3>
+    <p>学歴、職歴、アルバイト、インターン経験など。</p>
     <table>
-      <tr><th>2025年 3月</th><td><a href="https://bunsugi.jp/">文化学園大学杉並高等学校</a> 卒業</td></tr>
-      <tr><th>2025年 10月</th><td>学校法人角川ドワンゴ学園 <a href="https://nnn.ed.jp/">ZEN大学</a> 入学</td></tr>
+      <tr>
+        <th>2025年 3月</th>
+        <td><a href="https://bunsugi.jp/">文化学園大学杉並高等学校</a> 卒業</td>
+      </tr>
+      <tr>
+        <th>2025年 10月</th>
+        <td>学校法人角川ドワンゴ学園 <a href="https://nnn.ed.jp/">ZEN大学</a> 入学</td>
+      </tr>
     </table>
-    <h3 class="typewriter">Open Processing</h3>
-    <iframe src="https://openprocessing.org/sketch/2959236/embed/" width="640" height="360"></iframe>
-
-    <script>
-      const elements = document.querySelectorAll('.typewriter');
-      let current = 0;
-
-      function typeElement(el, callback) {
-        const nodes = [];
-        function collectTextNodes(node) {
-          if (node.nodeType === Node.TEXT_NODE) {
-            nodes.push({ node, text: node.textContent });
-            node.textContent = '';
-          } else {
-            node.childNodes.forEach(collectTextNodes);
-          }
-        }
-        collectTextNodes(el);
-
-        let nodeIndex = 0;
-        let charIndex = 0;
-        el.style.borderRight = '2px solid';
-        el.style.animation = 'blink 0.75s step-end infinite';
-
-        const timer = setInterval(() => {
-          if (nodeIndex >= nodes.length) {
-            clearInterval(timer);
-            el.style.borderRight = 'none';
-            el.style.animation = 'none';
-            if (callback) callback();
-            return;
-          }
-          const cur = nodes[nodeIndex];
-          charIndex++;
-          cur.node.textContent = cur.text.slice(0, charIndex);
-          if (charIndex >= cur.text.length) {
-            nodeIndex++;
-            charIndex = 0;
-          }
-        }, 30);
-      }
-
-      function typeNext() {
-        if (current < elements.length) {
-          typeElement(elements[current], () => {
-            current++;
-            typeNext();
-          });
-        }
-      }
-
-      typeNext();
-    </script>
   </body>
 </html>
