@@ -46,7 +46,7 @@ a {
 ul {
   list-style: none;
 }
-li:before {
+li::before {
   content: "★";
   color: var(--theme-color);
 }
